@@ -1,0 +1,97 @@
+## Структура библиотеки
+
+```json
+builder/            # Сборщик
+docs/               # Документация
+src/
+    components/     # Компоненты
+    fileIcons/      # Иконки файлов
+    hooks/          # Хуки
+    icons/          # Иконки
+    mixs/           # Миксины
+    stand/          # Настройки библиотеки
+```
+
+## Структура текстовой страницы
+
+```json
+docs/
+    Block/                              # Страница
+        Block.stand.mdx                 # Текст на странице
+        Block.stand.tsx                 # Настройки страницы
+```
+
+На любую страницу можно добавить вкладки и примеры, структура файлов такая же, как для компонента.
+
+## Структура компонента
+
+```json
+components/
+    Block/                                  # Компонент
+        __tests__/                          # Тесты
+            Block.test.tsx                  # Реализация тестов для компонента
+            helpers.test.tsx                # Реализация тестов вспомогательных функций
+        __mocks__/                          # Моковые данные
+            data.mock.tsx                   # Моковые данные для примеров и тестов
+        __stand__/                          # Документация
+            examples/                       # Примеры
+                BlockExampleName/           # Блок с примерами
+                    BlockExampleName.css    # Реализация BlockExampleName в CSS
+                    BlockExampleName.tsx    # Реализация BlockExampleName в TS
+            Block.dev.stand.mdx             # Документация для Block, вкладка Код и свойство
+            Block.image.svg                 # Изображение для Block в списке компонентов
+            Block.stand.mdx                 # Документация для Block, вкладка Обзор
+            Block.stand.tsx                 # Настройки страницы с документацией
+            Block.variants.tsx              # Витрина компонента
+        BlockName/                          # Дочерний компонент
+            BlockName.css                   # Реализация BlockName в CSS
+            BlockName.tsx                   # Реализация BlockName в TS
+        Block.css                           # Реализация Block в CSS
+        Block.tsx                           # Реализация Block в TS
+        index.ts
+```
+
+Структура для хуков, хоков и миксинов формируется по тому же принципу.
+
+### Дочерний компонент — не элемент, а блок
+
+Все дочерние компоненты реализованы как **блоки** в БЭМ. В названии есть префикс, совпадающий с названием родительского блока, например:
+
+```json
+Button/
+    ButtonIcon/
+        ButtonIcon.tsx
+        ButtonIcon.css
+    Button.tsx
+    Button.tsx
+```
+
+### Дочерний компонент не может быть родителем других компонентов
+
+Неправильно:
+
+```json
+List/
+    ListItem/
+        ListItemButton/
+            ListItemButton.tsx
+            ListItemButton.css
+        ListItem.tsx
+        ListItem.css
+    List.tsx
+    List.css
+```
+
+Правильно:
+
+```json
+List/
+    ListItem/
+        ListItem.tsx
+        ListItem.css
+    ListItemButton/
+        ListItemButton.tsx
+        ListItemButton.css
+    List.tsx
+    List.css
+```

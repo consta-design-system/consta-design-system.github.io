@@ -36,7 +36,7 @@ libsPageConfig({
       sortOrder: 3,
     },
     {
-      label: 'Контрибьютерам',
+      label: 'Контрибьюторам',
       renderList: ListCardBanner,
       maxCount: 1,
       sortOrder: 4,

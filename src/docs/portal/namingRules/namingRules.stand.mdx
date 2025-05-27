@@ -1,0 +1,436 @@
+import { MdxMenu, MdxInformer } from '@consta/stand';
+
+<MdxMenu>
+
+- [Общие рекомендации](#общие-рекомандации)
+  - [Английский язык](#английский-язык)
+  - [Единообразие](#единообразие)
+  - [S-I-D](#s-i-d)
+  - [Сокращения](#сокращения)
+  - [Дублирование контекста](#дублирование-контекста)
+  - [Отображение ожидаемого результата](#отображение-ожидаемого-результата)
+- [Правила наименования переменных](#правила-наименования-переменных)
+  - [Значения и массивы](#значение-и-массивы)
+  - [Функции](#функции)
+    - [A/HC/LC Паттерн](#a/hc/lc-паттерн)
+    - [Префикс](#префикс)
+    - [Действия](#действия)
+    - [Контекст](#контекст)
+  - [Обработчики событий](#обработчики-событий)
+- [Правила наименования файлов и папок](#правила-наименования-файлов-и-папок)
+
+</MdxMenu>
+
+## Общие правила
+
+### Английский язык
+
+Используйте английский язык при именовании переменных и функций.
+
+```jsx
+/* Плохо */
+const primerNombre = 'Gustavo';
+const amigos = ['Kate', 'John'];
+
+/* Хорошо */
+const firstName = 'Gustavo';
+const friends = ['Kate', 'John'];
+```
+
+### Единообразие
+
+Выберите одно соглашение об именовании и следуйте ему. Это может быть `camelCase`, `PascalCase`, `snake_case` или `kebab-case`.
+
+Так как Consta разработана на React, везде, кроме названий компонентов, мы будем использовать нотацию `camelCase`.
+
+```jsx
+/* Плохо */
+const page_count = 5;
+const shouldUpdate = true;
+
+/* Хорошо */
+const pageCount = 5;
+const shouldUpdate = true;
+
+/* Тоже хорошо */
+const page_count = 5;
+const should_update = true;
+```
+
+### S-I-D
+
+Имя должно быть коротким, интуитивно понятным и описательным:
+
+- **Коротким (Short)**. Имя не должно занимать много времени, чтобы набираться и, следовательно, запоминаться;
+- **Интуитивно понятным (Intuitive)**. Имя должно звучать естественно, как можно ближе к обыденной речи;
+- **Описательным (Descriptive)**. Имя должно наиболее эффективно отражать то, что оно делает/чем обладает.
+
+```jsx
+/* Плохо */
+const a = 5; // "a" может означать что угодно
+const isPaginatable = a > 10; // "Paginatable" звучит крайне неестественно
+const shouldPaginatize = a > 10; // Придуманные глаголы — это так весело!
+
+/* Хорошо */
+const postCount = 5;
+const hasPagination = postCount > 10;
+const shouldPaginate = postCount > 10; // альтернативно
+```
+
+### Сокращения
+
+Не используйте сокращения. Они не способствуют ничему, кроме снижения читабельности кода. Найти короткое, описательное имя может быть сложно, но сокращение не является оправданием для отказа от этого.
+
+```jsx
+/* Плохо */
+const onItmClk = () => {};
+
+/* Хорошо */
+const onItemClick = () => {};
+```
+
+### Дублирование контекста
+
+Имя не должно дублировать контекст, в котором оно определено. Всегда удаляйте контекст из имени, если это не ухудшает его читабельность.
+
+```jsx
+class MenuItem {
+  /* Имя метода дублирует контекст (который "MenuItem") */
+  handleMenuItemClick = (event) => { ... }
+
+  /* Читается хорошо, как `MenuItem.handleClick()` */
+  handleClick = (event) => { ... }
+}
+```
+
+### Отображение ожидаемого результата
+
+Имя должно отражать ожидаемый результат.
+
+```jsx
+/* Плохо */
+const isEnabled = itemCount > 3;
+return <Button disabled={!isEnabled} />;
+
+/* Хорошо */
+const isDisabled = itemCount <= 3;
+return <Button disabled={isDisabled} />;
+```
+
+## Правила наименования переменных
+
+Виды переменных:
+
+- значение — существительное: `cat`, `dog`;
+- массив — существительное в множественном числе: `cats`, `dogs`;
+- функция — глагол: `download`, `update`;
+- обработчик — имя описывает событие, по которому он вызывается. Как правило, содержит префикс `on` или постфикс `Handler`: `onButtonClick`, `formSendHandler`;
+- компоненты высшего порядка (HOC);
+- класс — существительное с заглавной буквой: `Cat`, `Dog`;
+- константа — всё имя пишется заглавными буквами в стиле snake_case: `MAXIMUM_FOOD`, `LIMIT_X`;
+
+### Значения и массивы
+
+Имена переменных могут быть сделаны единственными или множественными в зависимости от того, содержат ли они одно значение или несколько значений.
+
+```jsx
+/* Плохо */
+const friends = 'Bob';
+const friend = ['Bob', 'Tony', 'Tanya'];
+
+/* Хорошо */
+const friend = 'Bob';
+const friends = ['Bob', 'Tony', 'Tanya'];
+```
+
+### Функции
+
+#### A/HC/LC Паттерн
+
+Существует полезный шаблон, которому необходимо следовать при именовании функций:
+
+`prefix? + action (A) + high context (HC) + low context? (LC)`
+
+Посмотрите, как можно применить этот шаблон, в таблице ниже.
+
+| Название               | Префикс  | Действие (A) | Главный контекст (HC) | Вторичный контекст (LC) |
+| ---------------------- | -------- | ------------ | --------------------- | ----------------------- |
+| `getUser`              |          | `get`        | `User`                |                         |
+| `getUserMessages`      |          | `get`        | `User`                | `Messages`              |
+| `handleClickOutside`   |          | `handle`     | `Click`               | `Outside`               |
+| `shouldDisplayMessage` | `should` | `Display`    | `Message`             |                         |
+
+<MdxInformer status="normal">
+
+Порядок контекста влияет на значение переменной. Например, `shouldUpdateComponent` означает, что вы собираетесь обновить компонент, в то время как `shouldComponentUpdate` говорит вам, что компонент обновится сам по себе, и вы только контролируете, когда он должен обновиться. Другими словами, главный контекст подчеркивает значение переменной.
+
+</MdxInformer>
+
+#### Префикс
+
+Префикс усиливает значение переменной.
+
+<MdxInformer status="normal">
+
+Префиксы `is`, `are`, `has` и `should` помогают разработчикам различать булевые значения от любых других.
+
+</MdxInformer>
+
+- `is`
+
+Описывает характеристику или состояние текущего контекста (обычно `boolean`).
+
+```jsx
+const color = 'blue';
+const isBlue = color === 'blue'; // характеристика*
+const isPresent = true; // состояние*
+if (isBlue && isPresent) {
+  console.log('Blue is present!');
+}
+```
+
+- `has`
+
+Описывает, обладает ли текущий контекст определенным значением или состоянием (обычно `boolean`).
+
+```jsx
+/* Плохо */
+const isProductsExist = productsCount > 0;
+const areProductsPresent = productsCount > 0;
+
+/* Хорошо */
+const hasProducts = productsCount > 0;
+```
+
+- `should`
+
+Отражает положительное условное утверждение (обычно `boolean`), связанное с определенным действием.
+
+```jsx
+function shouldUpdateUrl(url, expectedUrl) {
+  return url !== expectedUrl;
+}
+```
+
+- `min`/`max`
+
+Представляет собой минимальное или максимальное значение. Используется при описании границ или ограничений.
+
+```jsx
+/**
+ * Отображает случайное количество постов
+ * в пределах заданных минимальных и максимальных границ.
+ */
+function renderPosts(posts, minPosts, maxPosts) {
+  return posts.slice(0, randomBetween(minPosts, maxPosts));
+}
+```
+
+- `prev`/`next`
+
+Укажите предыдущее или следующее состояние переменной в текущем контексте. Используется при описании переходов состояний.
+
+```jsx
+async function getPosts() {
+  const prevPosts = this.state.posts;
+
+  const latestPosts = await fetch('...');
+  const nextPosts = concat(prevPosts, latestPosts);
+
+  this.setState({ posts: nextPosts });
+}
+```
+
+#### Действия
+
+Глагольная часть имени вашей функции - самая важная часть, отвечающая за описание того, что функция делает.
+
+- `get`
+
+Доступ к данным немедленно (т.е. сокращенный метод получения внутренних данных).
+
+```jsx
+function getFruitCount() {
+  return this.fruits.length;
+}
+```
+
+Вы также можете использовать `get` при выполнении асинхронных операций:
+
+```jsx
+async function getUser(id) {
+  const user = await fetch(`/api/user/${id}`);
+  return user;
+}
+```
+
+- `set`
+
+Устанавливает переменную декларативным способом, заменяя значение `A` на значение `B`.
+
+```jsx
+let fruits = 0;
+
+function setFruits(nextFruits) {
+  fruits = nextFruits;
+}
+
+setFruits(5);
+console.log(fruits); *// 5*
+```
+
+- `reset`
+
+Устанавливает переменную обратно в её начальное значение или состояние.
+
+```jsx
+const initialFruits = 5;
+let fruits = initialFruits;
+setFruits(10);
+console.log(fruits); // 10
+
+function resetFruits() {
+  fruits = initialFruits;
+}
+
+resetFruits();
+console.log(fruits); // 5
+```
+
+- `remove`
+
+Удаляет что-то откуда-то.
+
+Например, если у вас есть набор выбранных фильтров на странице поиска, удаление одного из них из коллекции будет называться `removeFilter`, а не `deleteFilter` (и это естественным образом выразится и по-английски):
+
+```jsx
+function removeFilter(filterName, filters) {
+  return filters.filter((name) => name !== filterName);
+}
+
+const selectedFilters = ['price', 'availability', 'size'];
+removeFilter('price', selectedFilters);
+```
+
+- `delete`
+
+Полностью стирает что-то навсегда.
+
+Представьте, что вы редактор контента, и есть тот пресловутый пост, от которого вы хотите избавиться. Как только вы нажмете на яркую кнопку **Удалить пост**, система управления контентом выполнит действие `deletePost`, а не `removePost`.
+
+```jsx
+function deletePost(id) {
+  return database.find({ id }).delete();
+}
+```
+
+<MdxInformer status="success">
+  Подробнее о разнице между `delete` и `remove` читайте
+  [здесь](https://github.com/kettanaito/naming-cheatsheet/issues/74#issue-1174942962).
+</MdxInformer>
+
+- `compose`
+
+Создает новые данные на основе существующих. Применяется в основном к строкам, объектам или функциям.
+
+```jsx
+function composePageUrl(pageName, pageId) {
+  return pageName.toLowerCase() + '-' + pageId;
+}
+```
+
+- `handle`
+
+Обрабатывает действие. Часто используется при именовании метода обратного вызова.
+
+```jsx
+function handleLinkClick() {
+  console.log('Clicked a link!');
+}
+
+link.addEventListener('click', handleLinkClick);
+```
+
+#### Контекст
+
+Область действия функции.
+
+Функция часто представляет собой действие над чем-то. Важно указать ее область действия или, по крайней мере, ожидаемый тип данных.
+
+```jsx
+/* Чистая функция, работающая с примитивами */
+function filter(list, predicate) {
+  return list.filter(predicate);
+}
+
+/* Функция, работающая исключительно с постами */
+function getRecentPosts(posts) {
+  return filter(posts, (post) => post.date === Date.now());
+}
+```
+
+<MdxInformer status="normal">
+
+Некоторые предположения, специфичные для языка, могут позволять опускать контекст. Например, в JavaScript часто бывает так, что метод `filter` применяется к массиву. Добавление явного `filterArray` было бы излишним.
+
+</MdxInformer>
+
+### Обработчики событий
+
+Обработчики событий должны иметь префикс `handle` или `on`.
+
+```jsx
+const handleInputChange = (e) => {
+  // handle input change
+};
+
+const onButtonClick = () => {
+  // handle button click
+};
+```
+
+### Компоненты высшего порядка (HOC)
+
+Компоненты высшего порядка (HOC) — это функции, которые принимают компонент и возвращают новый компонент с дополнительной функциональностью.
+
+Имена HOC следует указывать с префиксом `with`.
+
+```jsx
+const withAuth = (Component) => {
+  // add authentication logic
+};
+const withTheme = (Component) => {
+  // add theme logic
+};
+```
+
+## Правила наименования файлов и папок
+
+В целях поддержания единообразия именования файлов и папок используем следующие правила:
+
+**Именование компонентов**:
+
+- Названия файлов и папок для компонентов пишем в формате `PascalCase`.
+- Пример: `ContextMenu`, `ButtonGroup`.
+
+**Именование других файлов и папок**:
+
+- В остальных случаях используем `camelCase`.
+- Пример: `aboutConsta`, `colorPalette`.
+
+<MdxInformer status="warning">
+
+    Используйте одинаковые названия для id в [настройках стенда](##LIBS.LIB.STAND/lib:portal/stand:portal-documentation-structure/hash:настройки-стенда) и названия файла и папки.
+
+</MdxInformer>
+
+**Именование URL**:
+
+- В [настройках стенда](##LIBS.LIB.STAND/lib:portal/stand:portal-documentation-structure/hash:настройки-стенда) в свойстве `id` используйте строчные буквы и соединяйте слова дефисом.
+- Пример: `context-menu`, `about-theme`.
+
+<MdxInformer status="alert">
+
+    Не прописывайте статус компонента в `id`, чтобы избежать дублирования статуса в URL.
+
+</MdxInformer>

@@ -21,7 +21,7 @@ export const { createStand, createPage } = createConfig({
       id: 'theme',
     },
     {
-      title: 'Контрибьютерам',
+      title: 'Контрибьюторам',
       id: 'contributers',
     },
     {

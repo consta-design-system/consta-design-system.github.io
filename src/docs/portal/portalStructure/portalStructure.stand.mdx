@@ -1,0 +1,267 @@
+import { MdxTabs, MdxMenu, MdxImage, MdxInformer } from '@consta/stand';
+import description from './images/description.png';
+import section from './images/section.png';
+import structure from './images/structure.png';
+import tabs from './images/tabs.png';
+
+<MdxMenu>
+
+- [Общая структура](#общая-структура)
+- [Библиотеки](#библиотеки)
+- [Группа стендов](#группы-стендов)
+- [Стенд](#стенд)
+  - [Настройки стенда](#настройки-стенда)
+  - [Страницы стенда](#страницы-стенда)
+- [Запустить проект локально](#запустить-проект-локально)
+- [Полезные ссылки](#полезные-ссылки)
+
+</MdxMenu>
+
+## Общая структура
+
+Портал с документацией объединяет все библиотеки Consta. Библиотеки находятся в разных репозиториях, в каждом репозитории – своя документация. Портал автоматически собирает страницу со списком библиотек и показывает все библиотеки на одном сайте, на одном домене и под общей шапкой.
+
+<MdxImage src={structure} />
+
+## Библиотеки
+
+Портал Consta собирается автоматически из библиотек на GitHub:
+
+- [portal](https://github.com/consta-design-system/portal). Инструкции по работе с Consta и отдельными инструментами.
+- [uikit](https://github.com/consta-design-system/uikit). Библиотека интерфейсных компонентов.
+- [icons](https://github.com/consta-design-system/icons). Библиотека иконок.
+- [table](https://github.com/consta-design-system/table). Библиотека компонентов для таблицы.
+- [themes](https://github.com/consta-design-system/themes). Библиотека готовых тем.
+
+<MdxInformer status="normal">
+
+Полный список библиотек смотрите в [GitHub](https://github.com/orgs/consta-design-system/repositories?type=all).
+
+</MdxInformer>
+
+Чтобы добавить библиотеку:
+
+1. В репозитории библиотеки, которую нужно обновить или добавить на страницу, заполните конфигурационный файл стенда `stand/standConfig.ts` и выложите в продакшен в основную ветку (обычно это `master`).
+2. Добавьте репозиторий и ветку, из которой нужно взять данные для библиотеки, в список [clone-repositories.sh](https://github.com/consta-design-system/portal/blob/master/clone-repositories.sh).
+
+Например, так:
+
+```tsx
+git clone -b master https://${REPO_ACCESS_TOKEN}@github.com/consta-design-system/uikit.git ./repositories/uikit`
+```
+
+3. Добавьте алиас библиотеки в [webpack.config.js](https://github.com/consta-design-system/portal/blob/master/webpack.config.js) в объект `repos`:
+
+```tsx
+const repos = [
+  'analytic-ui',
+  'uikit',
+  'charts',
+  'header',
+  'stats',
+  'react-big-calendar-adapter',
+  'gantt-task-react-adapter',
+  'rc-tree-adapter',
+  'rc-table-adapter',
+  'ag-grid-adapter',
+  'widgets',
+  'amcharts-map-examples',
+  'gpn-responses',
+  'icons',
+];
+```
+
+Это нужно для работы абсолютных путей через `##`.
+
+Например, конструкция `##/utils/bem` в репозитории `@consta/uikit` обрабатывается как `/repositories/uikit/utils/bem`, а в `@consta/header` — как `/repositories/header/utils/bem`.
+
+4. Соберите портал:
+
+```tsx
+# клонируйте репозитории
+yarn clone-repos
+
+# копируйте зависимости репозиториев в проект (если нужно)
+yarn copy-deps
+
+# установите зависимости
+yarn install
+
+# запустите стенд
+yarn start
+```
+
+## Группа стендов
+
+[Стенды](#стенд) в каждой библиотеке разбиты по группам. Названия групп соответствуют значению `id` в файле `standConfig.ts` и оформляются в соответствии с [Соглашением об именах](##LIBS.LIB.STAND/lib:portal/stand:portal-naming-rules).
+
+Чтобы добавить группу статей, добавьте группу в настройки библиотеки `src/stand/standConfig.ts` в объект `groups`:
+
+```tsx
+groups: [
+  {
+    title: 'Начало работы',
+    id: 'startwork',
+  },
+];
+```
+
+## Стенд
+
+Стенд – это папка, в которой хранится вся информация по отдельной сущности дизайн-системы. Структура стендов подчиняется методологии [БЭМ](##LIBS.LIB.STAND/lib:portal/stand:contributers-componentguide). В названии есть префикс, который совпадает с названием родительского блока. Например:
+
+```rsx
+docs/
+    Block/                              # Стенд
+        Block.stand.mdx                 # Страница с текстовым описанием сущности
+        Block.stand.tsx                 # Настройки стенда
+```
+
+Документация состоит из двух типов файлов:
+
+- [настройки стенда](#настройки-стенда) – файл с расширением `ts`.
+- [страница стенда](#страницы-стенда) – файл с расширением `mdx`.
+
+### Настройки стенда
+
+Настройки зависят от типа редактируемой сущности: статья или компонент.
+
+Чтобы настроить стенд:
+
+1. Перейдите в файл стенда с расширением `ts`.
+2. Задайте настройки:
+
+<MdxTabs labels = {['Статья', 'Компонент']} view = "clear">
+<>
+
+```jsx
+import { createStand } from '##/stand/standConfig';
+
+export default createStand({
+  title: 'О дизайн-системе',
+  id: 'about-consta',
+  group: 'startwork',
+  order: 120,
+  alias: ['теория', 'дизайн-система', 'зачем'],
+  description: 'Что такое Consta, зачем она нужна и кому будет полезна',
+});
+```
+
+Где:
+
+- `title` – заголовок страницы. Он будет отображаться вверху страницы в качестве заголовка H1.
+- `id` – id страницы. Используется при создании URL.
+
+<MdxInformer status="warning">
+
+В поле `id` используйте `kebab-case`. Так вы сможете обеспечить удобство восприятия в URL страницы.
+
+</MdxInformer>
+
+- `group` – группа, к которой принадлежит страница. Все группы разделов можно посмотреть в папке `stand` в файле `standConfig.ts`.
+- `order` – порядок отображения страницы на портале. Так, чтобы отобразить страницу в первом разделе второй, задайте значение `120`.
+- `alias` – ключевые слова для поиска по порталу.
+- `description` – краткое описание содержимого страницы. Отображается под заголовком страницы.
+
+</>
+
+<>
+
+```jsx
+import { createStand } from '##/stand/standConfig';
+
+export default createStand({
+  title: 'DragNDropField',
+  id: 'DragNDropField',
+  group: 'components',
+  description:
+    'Компонент позволяет загружать файлы путем перетаскивания или через диалоговое окно',
+  version: '5.3.0',
+  status: 'canary',
+  alias: ['поле', 'ввод', 'файл', 'файлы', 'загрузка', 'выбор'],
+  figma:
+    'https://www.figma.com/file/v9Jkm2GrymD277dIGpRBSH/Consta-UI-Kit?type=design&node-id=32774-0&mode=design',
+  order: 10,
+});
+```
+
+Где:
+
+- `title` – заголовок страницы. Он будет отображаться вверху страницы в качестве заголовка H1.
+- `id` – id страницы. Используется при создании URL.
+- `group` – группа, к которой принадлежит страница. Все группы разделов можно посмотреть в папке `stand` в файле `standConfig.ts`.
+- `order` – порядок отображения страницы на портале. Так, чтобы отобразить страницу в первом разделе второй, задайте значение `120`.
+
+<MdxInformer status="normal">
+  Компоненты и адаптеры в идут в алфавитном порядке. Для них задавать `order` не
+  нужно.
+</MdxInformer>
+
+- `alias` – ключевые слова для поиска по порталу.
+- `description` – краткое описание содержимого страницы. Отображается под заголовком страницы.
+- `version` – версия, в которой компонент стал доступен.
+- `status` – статус компонента. Всего три статуса:
+  - `deprecated` – устаревшая версия компонента.
+  - `stable` – стабильная версия компонента.
+  - `canary` – тестовая версия компонента.
+- `figma` – ссылка на компонент в фигме. Обратите внимание, что ссылка должна быть в режиме `mode=design`.
+- `github` – ссылка на компонент в гитхабе.
+
+</>
+</MdxTabs>
+
+### Страницы стенда
+
+Документация задается на страницах раздела. С помощью страниц можно разбивать информацию в разделе по содержанию и целевой аудитории.
+
+Чтобы создать страницу внутри стенда:
+
+1. Перейдите в папку стенда.
+2. Создайте страницу по принципу `<название_стенда>.<id_страницы>.stand.mdx`.
+
+`id_страницы` задается в файле `standConfig.ts`:
+
+```jsx
+export const { createStand } = createConfig({
+../../..
+standTabs: [
+    // страницы по умолчанию
+    { id: '', label: 'Обзор' },
+    { id: 'dev', label: 'Разработчикам' },
+    { id: 'design', label: 'Дизайнерам', figma: true },
+    { id: 'sandbox', label: 'Песочница', sandbox: true },
+    // свои страницы
+    { id: 'use', label: 'Как использовать' },
+  ],
+../../..
+});
+```
+
+О форматировании текста на страницах стенда читайте в разделе [Форматирование текста](##LIBS.LIB.STAND/lib:portal/stand:portal-formatting-rules).
+
+## Запустить проект локально
+
+Чтобы запустить проект локально:
+
+1. Установите или обновите зависимости:
+
+```json
+yarn install
+```
+
+2. Запустите сборку:
+
+```json
+yarn start
+```
+
+Полный список команд смотрите в файле `package.json`.
+
+## Полезные ссылки
+
+{/* Проверить ссылки перед релизом */}
+
+- [Работа с Порталом](##LIBS.LIB.STAND/lib:portal/stand:portal-configuring-portal)
+- [Форматирование текста](##LIBS.LIB.STAND/lib:portal/stand:portal-formatting-rules)
+- [Работа с Git](##LIBS.LIB.STAND/lib:portal/stand:portal-work-with-git)
+- [Сборка компонентов Consta](##LIBS.LIB.STAND/lib:portal/stand:contributers-componentguide)
