@@ -34,10 +34,10 @@ export type PictureProps = {
 
 type Props = PropsWithHTMLAttributesAndRef<PictureProps, HTMLPictureElement>;
 
-type Picture = (props: Props) => React.ReactElement | null;
+type PictureComponent = (props: Props) => React.ReactNode;
 
 // eslint-disable-next-line react/display-name
-export const Picture: Picture = React.forwardRef((props, ref) => {
+export const Picture: PictureComponent = React.forwardRef((props, ref) => {
   const { alt, title, src, mode = 1, ...otherProps } = props;
   const { theme } = useTheme();
 

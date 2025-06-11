@@ -27,9 +27,7 @@ type Props<ITEM> = PropsWithHTMLAttributesAndRef<
   HTMLDivElement
 >;
 
-type PresetListComponent = <ITEM>(
-  props: Props<ITEM>,
-) => React.ReactElement | null;
+type PresetListComponent = <ITEM>(props: Props<ITEM>) => React.ReactNode;
 
 export const PresetList: PresetListComponent = React.forwardRef(
   (props, ref) => {

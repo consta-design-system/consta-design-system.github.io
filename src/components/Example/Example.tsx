@@ -19,7 +19,7 @@ type ItemCG = string;
 const CG = ['Выбери меня', 'Нет, меня'];
 
 const ButtonWithTooltip = withTooltip({
-  content: (
+  tooltipContent: (
     <Text size="s" align="center" lineHeight="m" view="primary">
       Это тултип, он всегда в цветовой теме, контрастной по отношению к основной
     </Text>

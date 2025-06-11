@@ -26,7 +26,7 @@ export type HeaderProps = PropsWithHTMLAttributesAndRef<
   HTMLDivElement
 >;
 
-export type HeaderComponent = (props: HeaderProps) => React.ReactElement | null;
+export type HeaderComponent = (props: HeaderProps) => React.ReactNode;
 
 export const Header: HeaderComponent = React.forwardRef((props, ref) => {
   const { logo: Logo, menu, className, logoLink, ...otherProps } = props;
