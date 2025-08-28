@@ -193,7 +193,7 @@
     "@consta/charts": "^1.0.0",
     "@consta/header": "^3.0.0",
     "@consta/icons": "^1.1.0",
-    "@consta/stand": "^0.0.154",
+    "@consta/stand": "^0.0.159",
     "@consta/uikit": "^5.0.0",
     "@consta/widgets-utils": "^0.2.15",
     "@evless/react-textfit": "1.1.1",
