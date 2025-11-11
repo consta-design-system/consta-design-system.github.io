@@ -1,6 +1,6 @@
 {
   "name": "@consta/portal",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "licenses": [
     {
       "type": "MIT",
@@ -194,6 +194,7 @@
     "@consta/header": "^3.0.0",
     "@consta/icons": "^1.1.0",
     "@consta/stand": "^0.0.159",
+    "@consta/table": "^0.7.2",
     "@consta/uikit": "^5.0.0",
     "@consta/widgets-utils": "^0.2.15",
     "@evless/react-textfit": "1.1.1",
