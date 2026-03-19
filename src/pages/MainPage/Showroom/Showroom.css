@@ -87,7 +87,7 @@
 }
 
 @keyframes move {
-  from {
+  0% {
     transform: translateX(-40%);
   }
 

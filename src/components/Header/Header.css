@@ -6,7 +6,7 @@
   padding: 3vw 5vw;
   background-color: var(--color-bg-default);
 
-  @media (min-width: 600px) {
+  @media (width >= 600px) {
     padding: var(--space-m) var(--space-4xl);
   }
 
@@ -22,7 +22,7 @@
       --item-space: var(--space-xs);
       margin-left: var(--item-space);
 
-      @media (min-width: 1024px) {
+      @media (width >= 1024px) {
         --item-space: var(--space-2xl);
       }
     }

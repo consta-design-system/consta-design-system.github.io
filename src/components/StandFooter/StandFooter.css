@@ -16,11 +16,10 @@
   }
 
   &_breakpointM {
-    width:
-      calc(
-        100% - var(--doc-layout-center-padding-left) -
+    width: calc(
+      100% - var(--doc-layout-center-padding-left) -
         var(--doc-layout-center-padding-right)
-      );
+    );
   }
 
   & a {

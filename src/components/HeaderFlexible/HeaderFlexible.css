@@ -8,7 +8,7 @@
       &-Menu {
         display: none;
 
-        @media (min-width: 720px) {
+        @media (width >= 720px) {
           display: flex;
         }
       }
@@ -27,7 +27,7 @@
       transition: transform 0.4s;
       transform: translateY(-100%);
 
-      @media (min-width: 600px) {
+      @media (width >= 600px) {
         padding: var(--space-s) var(--space-3xl);
       }
     }
@@ -48,7 +48,7 @@
       }
 
       &-Link {
-        @media (max-width: 719px) {
+        @media (width <= 719px) {
           margin-left: 0;
           font-size: 0;
         }

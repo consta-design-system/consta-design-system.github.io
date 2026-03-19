@@ -1,5 +1,5 @@
 .portal--ThemeControls {
-  @media (min-width: 1024px) {
+  @media (width >= 1024px) {
     --radius: 16px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -9,7 +9,7 @@
   &-Example {
     display: none;
 
-    @media (min-width: 1024px) {
+    @media (width >= 1024px) {
       display: block;
     }
   }
@@ -19,11 +19,11 @@
     width: 100%;
     max-width: 500px;
 
-    @media (min-width: 1024px) {
+    @media (width >= 1024px) {
       padding-left: var(--space-xl);
     }
 
-    @media (min-width: 1200px) {
+    @media (width >= 1200px) {
       padding-left: var(--space-3xl);
     }
   }
@@ -38,7 +38,7 @@
 
   &-Item {
     &_type_size {
-      @media (max-width: 1023px) {
+      @media (width <= 1023px) {
         display: none;
       }
     }

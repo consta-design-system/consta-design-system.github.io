@@ -1,3 +1,5 @@
+/* stylelint-disable */
+
 .theme_gap_large {
   --gap: var(--space-l);
   --col-gap-third: calc(var(--gap) * 0.33);
@@ -6,19 +8,19 @@
   --col-gap-full: var(--gap);
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (width >= 720px) {
   .theme_gap_large {
     --gap: var(--space-2xl);
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (width >= 1024px) {
   .theme_gap_large {
     --gap: var(--space-3xl);
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (width >= 1280px) {
   .theme_gap_large {
     --gap: var(--space-4xl);
   }
@@ -32,19 +34,19 @@
   --col-gap-full: var(--gap);
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (width >= 720px) {
   .theme_gap_medium {
     --gap: var(--space-2xl);
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (width >= 1024px) {
   .theme_gap_medium {
     --gap: var(--space-3xl);
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (width >= 1280px) {
   .theme_gap_medium {
     --gap: var(--space-4xl);
   }
@@ -58,19 +60,19 @@
   --col-gap-full: var(--gap);
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (width >= 720px) {
   .theme_gap_small {
     --gap: var(--space-l);
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (width >= 1024px) {
   .theme_gap_small {
     --gap: var(--space-xl);
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (width >= 1280px) {
   .theme_gap_small {
     --gap: var(--space-2xl);
   }
@@ -93,19 +95,19 @@
 }
 
 .tpl-grid__fraction_xs-order_-1 {
-  -webkit-box-ordinal-group: 0;
+  order: 0;
   -ms-flex-order: -1;
   order: -1;
 }
 
 .tpl-grid__fraction_xs-order_0 {
-  -webkit-box-ordinal-group: 1;
+  order: 1;
   -ms-flex-order: 0;
   order: 0;
 }
 
 .tpl-grid__fraction_xs-order_1 {
-  -webkit-box-ordinal-group: 2;
+  order: 2;
   -ms-flex-order: 1;
   order: 1;
 }
@@ -122,7 +124,7 @@
   grid-row: span 3;
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (width >= 720px) {
   .tpl-grid__fraction_s-col_1 {
     grid-column: span 1;
   }
@@ -184,25 +186,25 @@
   }
 
   .tpl-grid__fraction_s-order_-1 {
-    -webkit-box-ordinal-group: 0;
+    order: 0;
     -ms-flex-order: -1;
     order: -1;
   }
 
   .tpl-grid__fraction_s-order_0 {
-    -webkit-box-ordinal-group: 1;
+    order: 1;
     -ms-flex-order: 0;
     order: 0;
   }
 
   .tpl-grid__fraction_s-order_1 {
-    -webkit-box-ordinal-group: 2;
+    order: 2;
     -ms-flex-order: 1;
     order: 1;
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (width >= 1024px) {
   .tpl-grid__fraction_m-col_1 {
     grid-column: span 1;
   }
@@ -264,25 +266,25 @@
   }
 
   .tpl-grid__fraction_m-order_-1 {
-    -webkit-box-ordinal-group: 0;
+    order: 0;
     -ms-flex-order: -1;
     order: -1;
   }
 
   .tpl-grid__fraction_m-order_0 {
-    -webkit-box-ordinal-group: 1;
+    order: 1;
     -ms-flex-order: 0;
     order: 0;
   }
 
   .tpl-grid__fraction_m-order_1 {
-    -webkit-box-ordinal-group: 2;
+    order: 2;
     -ms-flex-order: 1;
     order: 1;
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (width >= 1280px) {
   .tpl-grid__fraction_l-col_1 {
     grid-column: span 1;
   }
@@ -344,25 +346,25 @@
   }
 
   .tpl-grid__fraction_l-order_-1 {
-    -webkit-box-ordinal-group: 0;
+    order: 0;
     -ms-flex-order: -1;
     order: -1;
   }
 
   .tpl-grid__fraction_l-order_0 {
-    -webkit-box-ordinal-group: 1;
+    order: 1;
     -ms-flex-order: 0;
     order: 0;
   }
 
   .tpl-grid__fraction_l-order_1 {
-    -webkit-box-ordinal-group: 2;
+    order: 2;
     -ms-flex-order: 1;
     order: 1;
   }
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (width >= 1440px) {
   .tpl-grid__fraction_xl-col_1 {
     grid-column: span 1;
   }
@@ -424,49 +426,49 @@
   }
 
   .tpl-grid__fraction_xl-order_-1 {
-    -webkit-box-ordinal-group: 0;
+    order: 0;
     -ms-flex-order: -1;
     order: -1;
   }
 
   .tpl-grid__fraction_xl-order_0 {
-    -webkit-box-ordinal-group: 1;
+    order: 1;
     -ms-flex-order: 0;
     order: 0;
   }
 
   .tpl-grid__fraction_xl-order_1 {
-    -webkit-box-ordinal-group: 2;
+    order: 2;
     -ms-flex-order: 1;
     order: 1;
   }
 }
 
-@media screen and (max-width: 719px) {
+@media screen and (width <= 719px) {
   .tpl-grid__fraction_xs-col_hidden {
     display: none;
   }
 }
 
-@media screen and (min-width: 720px) and (max-width: 1023px) {
+@media screen and (width >= 720px) and (width <= 1023px) {
   .tpl-grid__fraction_s-col_hidden {
     display: none;
   }
 }
 
-@media screen and (min-width: 1024px) and (max-width: 1279px) {
+@media screen and (width >= 1024px) and (width <= 1279px) {
   .tpl-grid__fraction_m-col_hidden {
     display: none;
   }
 }
 
-@media screen and (min-width: 1280px) and (max-width: 1439px) {
+@media screen and (width >= 1280px) and (width <= 1439px) {
   .tpl-grid__fraction_l-col_hidden {
     display: none;
   }
 }
 
-@media screen and (min-width: 1440px) and (max-width: 1599px) {
+@media screen and (width >= 1440px) and (width <= 1599px) {
   .tpl-grid__fraction_xl-col_hidden {
     display: none;
   }
@@ -485,7 +487,7 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
-@media screen and (max-width: 719px) {
+@media screen and (width <= 719px) {
   .tpl-grid_xs-ratio_1-1-1 {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -506,7 +508,7 @@
   }
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (width >= 720px) {
   .tpl-grid_s-ratio_1-1-1-1-1 {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
@@ -536,7 +538,7 @@
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (width >= 1024px) {
   .tpl-grid_m-ratio_1-1-1-1-1 {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
@@ -566,7 +568,7 @@
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (width >= 1280px) {
   .tpl-grid_l-ratio_1-1-1-1-1 {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
@@ -596,7 +598,7 @@
   }
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (width >= 1440px) {
   .tpl-grid_xl-ratio_1-1-1-1-1 {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
@@ -627,43 +629,43 @@
 }
 
 .tpl-grid_col-gap_full {
-  grid-column-gap: var(--col-gap-full);
+  column-gap: var(--col-gap-full);
 }
 
 .tpl-grid_col-gap_half {
-  grid-column-gap: var(--col-gap-half);
+  column-gap: var(--col-gap-half);
 }
 
 .tpl-grid_col-gap_none {
-  grid-column-gap: var(--space-none);
+  column-gap: var(--space-none);
 }
 
 .tpl-grid_col-gap_third {
-  grid-column-gap: var(--col-gap-third);
+  column-gap: var(--col-gap-third);
 }
 
 .tpl-grid_col-gap_two-thirds {
-  grid-column-gap: var(--col-gap-two-thirds);
+  column-gap: var(--col-gap-two-thirds);
 }
 
 .tpl-grid_row-gap_full {
-  grid-row-gap: var(--col-gap-full);
+  row-gap: var(--col-gap-full);
 }
 
 .tpl-grid_row-gap_half {
-  grid-row-gap: var(--col-gap-half);
+  row-gap: var(--col-gap-half);
 }
 
 .tpl-grid_row-gap_none {
-  grid-row-gap: none;
+  row-gap: none;
 }
 
 .tpl-grid_row-gap_third {
-  grid-row-gap: var(--row-gap-third);
+  row-gap: var(--row-gap-third);
 }
 
 .tpl-grid_row-gap_two-thirds {
-  grid-row-gap: var(--col-gap-two-thirds);
+  row-gap: var(--col-gap-two-thirds);
 }
 
 .tpl-layout__container {
@@ -796,7 +798,7 @@
   max-width: 560px;
 }
 
-@media screen and (max-width: 719px) {
+@media screen and (width <= 719px) {
   .tpl-grid_xs-ratio_1-1-1 {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -817,7 +819,7 @@
   }
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (width >= 720px) {
   .tpl-grid_s-ratio_1-1-1-1-1 {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
@@ -847,7 +849,7 @@
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (width >= 1024px) {
   .tpl-grid_m-ratio_1-1-1-1-1 {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
@@ -877,7 +879,7 @@
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (width >= 1280px) {
   .tpl-grid_l-ratio_1-1-1-1-1 {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
@@ -907,7 +909,7 @@
   }
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (width >= 1440px) {
   .tpl-grid_xl-ratio_1-1-1-1-1 {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }

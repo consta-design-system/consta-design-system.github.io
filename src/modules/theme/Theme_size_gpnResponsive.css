@@ -30,14 +30,14 @@
   --font-weight-text-extrabold: 800;
   --font-weight-text-black: 900;
 
-  @media screen and (min-width: 720px) {
+  @media screen and (width >= 720px) {
     --size-text-3xl: 2.5vw;
     --size-text-4xl: 3vw;
     --size-text-5xl: 4vw;
     --size-text-6xl: 5vw;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (width >= 1024px) {
     --size-text-3xl: 32px;
     --size-text-4xl: 48px;
     --size-text-5xl: 72px;

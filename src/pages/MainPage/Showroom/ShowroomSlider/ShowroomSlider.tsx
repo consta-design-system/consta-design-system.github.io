@@ -11,7 +11,7 @@ type Props = {
 const cnShowroomSlider = cn('ShowroomSlider');
 
 const scrollDirections = ['stop', 'up', 'down'] as const;
-type ScrollDirection = typeof scrollDirections[number];
+type ScrollDirection = (typeof scrollDirections)[number];
 
 export const ShowroomSlider: React.FC<Props> = ({ rows }) => {
   const [scrollDirection, setScrollDirection] = useState<ScrollDirection>(

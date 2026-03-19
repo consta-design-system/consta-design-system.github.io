@@ -7,7 +7,7 @@
     border-radius: var(--radius);
     box-shadow: var(--shadow-layer);
 
-    @media (min-width: 720px) {
+    @media (width >= 720px) {
       --radius: 16px;
     }
   }
@@ -18,14 +18,14 @@
     margin-bottom: var(--space-2xl);
     transform: translateX(-10%);
 
-    @media (min-width: 720px) {
+    @media (width >= 720px) {
       position: absolute;
       left: var(--space-xl);
       width: 48px;
       height: 48px;
     }
 
-    @media (min-width: 1024px) {
+    @media (width >= 1024px) {
       position: static;
     }
   }
@@ -39,15 +39,15 @@
     background-color: var(--bg-color);
     text-decoration: none;
 
-    @media (min-width: 720px) {
+    @media (width >= 720px) {
       padding: var(--space-2xl) var(--space-xl) var(--space-2xl) 33%;
     }
 
-    @media (min-width: 1024px) {
+    @media (width >= 1024px) {
       padding: var(--space-2xl) var(--space-xl) var(--space-2xl);
     }
 
-    @media (min-width: 1200px) {
+    @media (width >= 1200px) {
       padding: var(--space-xl) var(--space-2xl) var(--space-2xl);
     }
 

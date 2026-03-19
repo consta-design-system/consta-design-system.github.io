@@ -18,7 +18,7 @@
     right: 0;
     left: 0;
     bottom: 0;
-    background-image: url(../../../images/Blured-prj.jpg);
+    background-image: url('../../../images/Blured-prj.jpg');
     background-repeat: no-repeat;
     background-position: 0 100%;
     background-size: cover;
@@ -36,14 +36,14 @@
     filter: blur(24px);
   }
 
-  @media (min-width: 720px) {
+  @media (width >= 720px) {
     --radius: 16px;
   }
 
   &-Button {
     width: 100%;
 
-    @media (min-width: 720px) {
+    @media (width >= 720px) {
       width: 320px;
     }
   }

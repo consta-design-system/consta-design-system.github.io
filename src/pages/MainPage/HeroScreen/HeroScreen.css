@@ -5,11 +5,11 @@
   &-Logo {
     max-width: 200px;
 
-    @media (min-width: 720px) {
+    @media (width >= 720px) {
       max-width: 30vw;
     }
 
-    @media (min-width: 1024px) {
+    @media (width >= 1024px) {
       max-width: 340px;
     }
   }
@@ -17,7 +17,7 @@
   &-Content {
     max-width: 600px;
 
-    @media (min-width: 720px) {
+    @media (width >= 720px) {
       width: 55%;
     }
   }
@@ -26,7 +26,7 @@
     display: block;
     margin: 16% calc(-1 * 5vw) 0;
 
-    @media (min-width: 720px) {
+    @media (width >= 720px) {
       position: absolute;
       z-index: -1;
       top: 60%;
@@ -36,7 +36,7 @@
       transform: translate(0, -50%);
     }
 
-    @media (min-width: 1024px) {
+    @media (width >= 1024px) {
       left: 55%;
       width: 60vw;
       max-width: 840px;

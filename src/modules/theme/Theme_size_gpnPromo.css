@@ -30,7 +30,7 @@
   --font-weight-text-extrabold: 800;
   --font-weight-text-black: 900;
 
-  @media screen and (min-width: 360px) {
+  @media screen and (width >= 360px) {
     --size-text-2xs: 10px;
     --size-text-xs: 12px;
     --size-text-s: 14px;
@@ -44,7 +44,7 @@
     --size-text-6xl: 40px;
   }
 
-  @media screen and (min-width: 720px) {
+  @media screen and (width >= 720px) {
     --size-text-2xs: 1.1vw;
     --size-text-xs: 1.3vw;
     --size-text-s: 1.5vw;
@@ -58,7 +58,7 @@
     --size-text-6xl: 7vw;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (width >= 1024px) {
     --size-text-2xs: 12px;
     --size-text-xs: 14px;
     --size-text-s: 16px;

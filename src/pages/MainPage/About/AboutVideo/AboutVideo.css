@@ -15,7 +15,7 @@
   font-size: var(--size-text-m);
   cursor: pointer;
 
-  @media (min-width: 1024px) {
+  @media (width >= 1024px) {
     --playSize: 2.5em;
     display: block;
     max-width: 13em;
@@ -29,7 +29,9 @@
     margin: 0 var(--space-m) 0 0;
     background: var(--bg);
     border-radius: 50%;
-    transition: background 0.24s, transform 0.24s;
+    transition:
+      background 0.24s,
+      transform 0.24s;
 
     &::before {
       content: '';
@@ -37,7 +39,7 @@
       padding-top: 100%;
     }
 
-    @media (min-width: 1024px) {
+    @media (width >= 1024px) {
       width: 100%;
       margin: 0 0 var(--space-l);
     }
@@ -53,9 +55,8 @@
     border-top-right-radius: 30%;
     text-align: left;
     transform: translate(-50%, -50%) rotate(30deg) skewX(-30deg) scale(1, 0.866);
-    filter:
-      drop-shadow(10px 20px 30px rgba(var(--color-shadow-modal-1), 0.1))
-      drop-shadow(8px 14px 20px rgba(var(--color-shadow-modal-2), 0.12));
+    filter: drop-shadow(10px 20px 30px rgb(var(--color-shadow-modal-1), 0.1))
+      drop-shadow(8px 14px 20px rgb(var(--color-shadow-modal-2), 0.12));
 
     &::before,
     &::after {
@@ -68,8 +69,7 @@
     }
 
     &::before {
-      transform:
-        rotate(-135deg) skewX(-45deg) scale(1.414, 0.707)
+      transform: rotate(-135deg) skewX(-45deg) scale(1.414, 0.707)
         translate(0, -50%);
     }
 
@@ -103,7 +103,7 @@
     max-height: calc(100% - var(--space-s));
     background: #000;
 
-    @media (min-width: 720px) {
+    @media (width >= 720px) {
       max-width: 90%;
       max-height: 90%;
     }

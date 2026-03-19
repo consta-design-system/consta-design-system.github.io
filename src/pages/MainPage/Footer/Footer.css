@@ -7,7 +7,7 @@
     padding-top: var(--space-xl);
     border-top: 1px solid var(--color-bg-border);
 
-    @media (max-width: 720px) {
+    @media (width <= 720px) {
       flex-direction: column;
 
       & > a {

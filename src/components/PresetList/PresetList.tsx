@@ -42,7 +42,7 @@ export const PresetList: PresetListComponent = React.forwardRef(
     } = props;
 
     const { getOnChange, getChecked } = useChoiceGroup<
-      typeof items[number],
+      (typeof items)[number],
       React.MouseEvent<HTMLButtonElement, MouseEvent>
     >({ value, getKey: getLabel, callBack: onChange, multiple: false });
 

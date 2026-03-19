@@ -149,12 +149,12 @@ p {
   padding-top: var(--space-2xl);
   padding-bottom: var(--space-2xl);
 
-  @media (min-width: 720px) {
+  @media (width >= 720px) {
     padding-top: 16vmin;
     padding-bottom: 16vmin;
   }
 
-  @media (min-width: 1024px) {
+  @media (width >= 1024px) {
     padding-top: var(--space-6xl);
     padding-bottom: var(--space-6xl);
   }
@@ -163,12 +163,12 @@ p {
     padding-top: var(--space-xl);
     padding-bottom: var(--space-xl);
 
-    @media (min-width: 720px) {
+    @media (width >= 720px) {
       padding-top: 10vmin;
       padding-bottom: 10vmin;
     }
 
-    @media (min-width: 1024px) {
+    @media (width >= 1024px) {
       padding-top: var(--space-4xl);
       padding-bottom: var(--space-4xl);
     }

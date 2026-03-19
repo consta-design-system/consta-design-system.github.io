@@ -1,3 +1,4 @@
+/* cspell:disable */
 module.exports = {
   env: {
     browser: true,
@@ -59,7 +60,7 @@ module.exports = {
     'default-param-last': 'off',
     'prettier/prettier': [
       'error',
-      { endOfLine: 'auto' },
+      {},
       {
         usePrettierrc: true,
       },
@@ -119,5 +120,6 @@ module.exports = {
         },
       },
     ],
+    'id-match': ['error', '^[\x00-\x7F]*$'],
   },
 };
