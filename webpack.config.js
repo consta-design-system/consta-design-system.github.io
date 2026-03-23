@@ -369,6 +369,10 @@ module.exports = function () {
         logo: path.resolve(__dirname, 'public', 'favicon.svg'),
         publicPath: '/',
         prefix: '',
+        favicons: {
+          icons: { windows: false },
+          output: { browserconfig: false },
+        },
       }),
     ].filter(Boolean),
 
