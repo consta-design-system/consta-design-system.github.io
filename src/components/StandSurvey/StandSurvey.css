@@ -1,0 +1,24 @@
+.portal--StandSurvey {
+  position: sticky;
+  z-index: 8000;
+  bottom: var(--doc-layout-content-padding-bottom);
+  padding-top: var(--doc-layout-content-padding-top);
+  padding-right: var(--doc-layout-content-padding-right);
+  padding-left: var(--doc-layout-content-padding-left);
+
+  &-Wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  &-Banner {
+    background: linear-gradient(135deg, #210cae 0%, #4dc9e6 100%);
+
+    /* position: sticky;
+    bottom: 40px; */
+  }
+
+  &-Button.Button {
+    display: inline-flex;
+  }
+}

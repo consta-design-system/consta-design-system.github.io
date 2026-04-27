@@ -11,6 +11,7 @@ import { useAtom } from '@reatom/npm-react';
 import React, { useRef } from 'react';
 
 import { StandFeedback } from '##/components/StandFeedback';
+import { StandSurvey } from '##/components/StandSurvey';
 import IconConsta from '##/icons/Consta.colorIcon.svg';
 import { cn } from '##/utils/bem';
 
@@ -28,6 +29,7 @@ export const StandFooter = () => {
   return (
     <>
       <StandFeedback />
+      <StandSurvey />
       <div
         ref={ref}
         className={cnStandFooter(addPrefix(breakpoints), [
