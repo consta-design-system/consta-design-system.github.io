@@ -32,6 +32,7 @@ const repos = [
   'theme-constructor',
   'themes',
   'table',
+  'echarts-adapter',
 ];
 
 const repositoriesTsRules = (repos) => {

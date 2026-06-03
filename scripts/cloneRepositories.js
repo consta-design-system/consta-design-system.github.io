@@ -26,6 +26,7 @@ const repos = [
   'react-slick-adapter',
   'themes',
   'table',
+  'echarts-adapter',
 ];
 
 const clone = async (repoName) => {
